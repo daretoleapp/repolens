@@ -13,7 +13,7 @@ export const env = {
   mimoPro: () => process.env.MIMO_MODEL_PRO || "xiaomi/mimo-v2.5-pro",
   mimoFlash: () => process.env.MIMO_MODEL_FLASH || "xiaomi/mimo-v2.5-flash",
   mimoVL: () => process.env.MIMO_MODEL_VL || "xiaomi/mimo-v2.5",
-  maxTokensPro: () => Number(process.env.MIMO_MAX_TOKENS_PRO || 400),
-  maxTokensFlash: () => Number(process.env.MIMO_MAX_TOKENS_FLASH || 150),
-  maxTokensVL: () => Number(process.env.MIMO_MAX_TOKENS_VL || 400),
+  maxTokensPro: () => Number(process.env.MIMO_MAX_TOKENS_PRO || 180),
+  maxTokensFlash: () => Number(process.env.MIMO_MAX_TOKENS_FLASH || 100),
+  maxTokensVL: () => Number(process.env.MIMO_MAX_TOKENS_VL || 180),
 };
