@@ -75,7 +75,7 @@ Return JSON only, no markdown.`;
         mimoModel = r.model;
       }
     } catch (e) {
-      if (!isMimoFallback(e)) console.error("[pr-risk] mimo error:", e);
+      console.error("[pr-risk] mimo call threw:", (e as Error).name, (e as Error).message);
     }
 
     const final = mimoResult && source === "mimo"
