@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0e14;
+  --background-elevated: #11161e;
+  --background-card: #131a24;
+  --foreground: #e6edf3;
+  --foreground-muted: #8b949e;
+  --foreground-subtle: #6e7681;
+  --border: #1f2937;
+  --border-strong: #374151;
+  --primary: #5eead4;
+  --primary-foreground: #042f2e;
+  --accent: #818cf8;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --success: #10b981;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
+  --color-background-card: var(--background-card);
   --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--border);
 }
 
-body {
+html, body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
+
+::selection {
+  background: rgba(94, 234, 212, 0.25);
+  color: var(--foreground);
+}
+
+/* Scrollbar — subtle dark */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--foreground-subtle); }
+
+/* Utility — soft glow on cards */
+.card-glow {
+  box-shadow: 0 0 0 1px var(--border), 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+.card-glow:hover {
+  box-shadow: 0 0 0 1px var(--border-strong), 0 4px 16px rgba(94, 234, 212, 0.06);
+}
+
+/* Utility — gradient text for hero */
+.gradient-text {
+  background: linear-gradient(135deg, #5eead4 0%, #818cf8 50%, #c084fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Utility — animated grid bg */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(94, 234, 212, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(94, 234, 212, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Loading shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, var(--background-card) 0%, var(--border) 50%, var(--background-card) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* Fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.3s ease-out; }
